@@ -121,22 +121,6 @@ def recall(y_true, y_pred):
     recall = true_positives / (possible_positives + K.epsilon())
     return recall
 
-def rms(y_true, y_pred):
-    rms = K.sqrt(K.mean(K.square(y_true - y_pred)))
-    return rms
-
-def nrms(y_true, y_pred):
-    numerator = K.sqrt(K.mean(K.square(y_true - y_pred)))
-    denominator = K.sqrt(K.mean(K.square(y_true - K.mean(y_true))))
-    nrms = numerator / (denominator + K.epsilon())
-    return nrms
-
-def r2(y_true, y_pred):
-    SS_res = K.sum(K.square(y_true - y_pred))
-    SS_tot = K.sum(K.square(y_true - K.mean(y_true)))
-    r2 = 1 - SS_res / (SS_tot + K.epsilon())
-    return r2
-
 def precision(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
