@@ -143,7 +143,7 @@ input_shape = (IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS)
 model = build_unet(input_shape)
 #Loss Function = Binary Cross Entropy (Because this code is for binanry classification)
 
-model.compile(optimizer=Adam(learning_rate = 1e-4), loss='binary_crossentropy', metrics=['accuracy',IoU,recall,rms,nrms,r2,precision,overall_accuracy])
+model.compile(optimizer=Adam(learning_rate = 1e-4), loss='binary_crossentropy', metrics=['accuracy',IoU,recall,precision,overall_accuracy])
 
 filepath = "#Outputfile path#-{epoch:03d}-{val_loss:.3f}.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=False, save_freq="epoch", mode='min')
